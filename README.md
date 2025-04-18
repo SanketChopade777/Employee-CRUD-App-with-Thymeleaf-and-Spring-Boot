@@ -54,7 +54,7 @@ src/
 1. 📥 **Clone the Repository**
 
    ```bash
-   git clone [https://github.com/your-username/employee-crud-app.git](https://github.com/SanketChopade777/Employee-CRUD-App-with-Thymeleaf-and-Spring-Boot)
+   git clone https://github.com/SanketChopade777/Employee-CRUD-App-with-Thymeleaf-and-Spring-Boot
    ```
 
 2. 🧩 **Open in STS**
