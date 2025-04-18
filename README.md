@@ -52,16 +52,19 @@ src/
 > Follow these steps to run the project in **Spring Tool Suite (STS)**:
 
 1. 📥 **Clone the Repository**
+
    ```bash
    git clone https://github.com/your-username/employee-crud-app.git
    ```
 
 2. 🧩 **Open in STS**
+
    - Open Spring Tool Suite.
    - Click on `File > Import > Existing Maven Projects`.
    - Navigate to the cloned project folder and click `Finish`.
 
 3. 🧱 **Build & Run**
+
    - Right-click the project and select `Run As > Spring Boot App`.
 
 4. 🌐 **Access the App**
@@ -77,27 +80,29 @@ src/
 To view the database in-browser:
 
 - Navigate to: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:testdb`
+- JDBC URL: `jdbc:h2:tcp://localhost/~/testdb`
 - Username: `sa`
-- Password: *(leave it blank)*
+- Password: _(leave it blank)_
 
 Make sure the console is enabled in `application.properties`:
 
 ```properties
-spring.h2.console.enabled=true
-spring.datasource.url=jdbc:h2:mem:testdb
+# H2 Database configuration
+spring.datasource.url=jdbc:h2:tcp://localhost/~/testdb;AUTO_SERVER=TRUE;IFEXISTS=FALSE
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
+
+# Enable H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.h2.console.settings.web-allow-others=true
+
+# JPA settings
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
+
 ```
-
----
-
-## ✨ Screenshots
-
-> (Add screenshots here of your registration form, employee list, and update form)
 
 ---
 
