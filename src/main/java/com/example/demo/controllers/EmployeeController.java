@@ -31,13 +31,14 @@ public class EmployeeController {
 
     // Save employee (Register)
     @PostMapping("/register")
-    public ModelAndView registerEmployee(@ModelAttribute Employee employee) {
+    public ModelAndView registerEmployee(@ModelAttribute Employee employee,RedirectAttributes redirectAttributes) {
         employeeService.saveEmployee(employee);
-        return new ModelAndView("redirect:/getForm");
+        redirectAttributes.addFlashAttribute("message", "Data is Added!");
+        return new ModelAndView("redirect:/employees");
     }
 
     // Show update form for a specific employee
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editForm/{id}")
     public ModelAndView editEmployee(@PathVariable int id) {
         Employee employee = employeeService.getEmployeeById(id).orElse(new Employee());
         Map<String, Object> model = new HashMap<>();
@@ -48,8 +49,9 @@ public class EmployeeController {
 
     // Update employee using POST (since HTML forms can't use PUT)
     @PostMapping("/update/{id}")
-    public ModelAndView updateEmployee(@PathVariable int id, @ModelAttribute Employee updatedEmployee) {
+    public ModelAndView updateEmployee(@PathVariable int id, @ModelAttribute Employee updatedEmployee,RedirectAttributes redirectAttributes) {
         employeeService.updateEmployee(id, updatedEmployee);
+        redirectAttributes.addFlashAttribute("message", "Data is Updated!");
         return new ModelAndView("redirect:/employees");
     }
 
